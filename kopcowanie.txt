@@ -16,7 +16,7 @@ begin
   if T[i]>T[i div 2] then exit;
   result:=true;
 end;
-
+g
 procedure shift_down(n,i: integer);
 var
   j,k: integer;
