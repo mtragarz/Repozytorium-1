@@ -1,0 +1,46 @@
+  PROCEDURE Quicksort(tablica, l, r)
+  BEGIN
+    IF l < r THEN                { jeœli fragment d³u¿szy ni¿ 1 element }
+      BEGIN
+        i := PodzielTablice(tablica, l, r); { podziel i zapamiêtaj punkt podzia³u }
+        Quicksort(tablica, l, i-1);         { posortuj lew¹ czêœæ }
+        Quicksort(tablica, i+1, r);         { posortuj praw¹ czêœæ }
+      END
+  END
+
+  {wybiera element, który ma byæ u¿yty do podzia³u
+   i przenosi wszystkie elementy mniejsze na lewo od
+   tego elementu, a elementy wiêksze lub równe, na prawo
+   od wybranego elementu }
+  PROCEDURE PodzielTablice(tablica, l, r)
+  BEGIN
+     indeksPodzialu := WybierzPunktPodzialu(l, r); {wybierz element, który pos³u¿y do podzia³u tablicy}
+     wartoscPodzialu := tablica[indeksPodzialu]; {zapamiêtaj wartoœæ elementu}
+     Zamien(tablica, indeksPodzialu, r); {przenieœ element podzia³u na koniec tablicy, aby sam nie bra³ udzia³u w podziale}
+     
+     aktualnaPozycja := l;
+     FOR i:=l; TO r-1 DO {iteruj przez wszytkie elementy, jeœli element jest mniejszy ni¿ wartoœæ elementu podzia³u dodaj go do "lewej" strony}
+     BEGIN
+         IF tablica[i] < wartoscPodzialu THEN
+         BEGIN
+             Zamien(tablica, i, aktualnaPozycja);
+             aktualnaPozycja := aktualnaPozycja + 1;
+         END
+     END
+     Zamien(tablica, aktualnaPozycja, r); {wstaw element podzia³u we w³aœciwe miejsce}
+     return aktualnaPozycja;
+  END
+
+  { podstawowa implementacja wyboru punktu podzia³u - wybiera element "œrodkowy" w tablicy }
+  PROCEDURE WybierzPunktPodzialu(l, r)
+  BEGIN
+     return l + (r-l) div 2;
+  END
+
+  { zamienia miejscami elementy w komórkach i1, i2 }
+  PROCEDURE Zamien(tablica, i1, i2)
+  BEGIN
+     aux := tablica[i1];
+     tablica[i1] := tablica[i2];
+     tablica[i2] := aux;
+  END
