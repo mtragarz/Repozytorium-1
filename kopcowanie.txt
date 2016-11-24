@@ -6,7 +6,7 @@ const
 var
   T:array[1..Size] of TElem = (4,1,3,2,16,9,10,14,8,7,99,78,55);
 
-//procedura testowa sprawdzaj¹ca czy dane maj¹ postaæ kopca
+//procedura testowa sprawdzajÂ¹ca czy dane majÂ¹ postaÃ¦ kopca
 function check_heap(n: integer): boolean;
 var
   i: integer;
@@ -37,7 +37,7 @@ end;
 
 procedure build_heap;
 var
-  i: integer;
+  i: integer;b
 begin
   for i := Size div 2 downto 1 do
     shift_down (Size,i);
@@ -54,11 +54,11 @@ begin
     T[1]:=T[i];
     T[i]:=aux;
     shift_down(i-1,1);
-    Assert(check_heap(i-1));//to mo¿e spowalniaæ
+    Assert(check_heap(i-1));//to moÂ¿e spowalniaÃ¦
   end;
 end;
 
-//mo¿liwoœæ wype³nienia innymi danymi np. po powiêkszeniu rozmiaru tablicy
+//moÂ¿liwoÅ“Ã¦ wypeÂ³nienia innymi danymi np. po powiÃªkszeniu rozmiaru tablicy
 procedure random_init;
 var
   i: integer;
