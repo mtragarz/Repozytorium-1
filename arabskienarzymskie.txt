@@ -1,17 +1,4 @@
-#include <stdio.h>
-#include <string.h>
 
-struct Rzym_t
-{
-  char *s;
-  int w;
-};
-
-static const Rzym_t Rzym[]=
-{
-  {"M",  1000},
-  {"CM",  900},
-  {"D",   500},
   {"CD",  400},
   {"C",   100},
   {"XC",   90},
